@@ -104,17 +104,9 @@ public:
 
 		for (int i = starting; i < ending; i++)
 		{
-			if (arr[i]->data == '*')
-			{
-				cout << arr[i]->data << " " << arr[i]->frequency <<
-					" " << arr[i]->left->data << "("<< arr[i]->left->frequency << ") " << arr[i]->right->data << "("  << arr[i]->right->frequency
-					<< ")" <<endl;
-			}
-			else
-				cout << arr[i]->data << " " << arr[i]->frequency << endl;
+			cout << arr[i]->data << " " << arr[i]->frequency << endl;
 		}
 		cout << endl;
-		//cout << "------------" << endl;
 
 	}
 
@@ -213,6 +205,7 @@ int main(void)
 	}
 
 
+	Tree huffboi(NULL);
 
 	//build huffman tree
 	while(!list.oneLeft())
@@ -225,28 +218,24 @@ int main(void)
 		node* newNode = new node('*',sum,one,two);
 		list.push(newNode);
 
+
+
+		//printing tree
+		for (int i = 0; i < huffboi.findHeight(newNode) + 1; i++)
+			cout << "  ";
+		cout << newNode->data << endl;
+		huffboi.printTree(newNode);
+
 	}
-	//list.print();
 
 	node* head = list.pop();
-
-	Tree huffboi(head);
-	cout << "------------" << endl;
-	cout << "printing tree" << endl;
-	cout << "------------" << endl;
-	
-	
+	cout << endl << endl;
 	huffboi.printLeaves(head,"");
 
-	cout << endl << endl;
 
 
 
-
-	for (int i = 0; i < huffboi.findHeight(head)+1; i++)
-		cout << "  ";
-	cout << head->data << endl;
-	huffboi.printTree(head);
+	
 
 
 
