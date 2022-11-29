@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-string word = "aabbbcddddd";
+string word = "aabbbcdddddfasdfadvdasewewrdfarewd";
 
 class node
 {
@@ -186,7 +186,7 @@ public:
 int main(void)
 {
 
-	queue list(word.size()+100);
+	queue list(word.size());
 
 	//count occurences
 	int arr[256] = { 0 };
@@ -205,7 +205,6 @@ int main(void)
 	}
 
 
-	Tree huffboi(NULL);
 
 	//build huffman tree
 	while(!list.oneLeft())
@@ -220,20 +219,24 @@ int main(void)
 
 
 
-		//printing tree
-		for (int i = 0; i < huffboi.findHeight(newNode) + 1; i++)
-			cout << "  ";
-		cout << newNode->data << endl;
-		huffboi.printTree(newNode);
-
 	}
+		list.print();
+
 
 	node* head = list.pop();
+	Tree huffboi(head);
+
+	huffboi.InorderTraversal(head);
+	huffboi.printInorder();
+
+	cout << endl <<  "_____________" << endl
+		<< "Genrerated codes" << endl;
 	cout << endl << endl;
 	huffboi.printLeaves(head,"");
 
 
-
+	//print tree logic is flawed for now
+	//please ignore or fix
 
 	
 
